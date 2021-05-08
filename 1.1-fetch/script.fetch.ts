@@ -5,7 +5,7 @@ const catchRainbowWithAsyncAwait = async () => {
   document.getElementById('rainbow1').setAttribute('src', urlFromBlob)
 }
 
-const catchRainbowWithFetch = () => {
+const catchRainbowWithFetch = (): void => {
   fetch('./rainbow-weather.jpeg')
     .then((response: Response) => {
       return response.blob()
@@ -19,5 +19,23 @@ const catchRainbowWithFetch = () => {
     })
 }
 
+const getTextFromTxtWithAsyncAwait = async () => {
+  const response: Response = await fetch('./text.txt')
+  const text: string = await response.text()
+  document.getElementById('paragraphTxt2').innerHTML = text
+}
+
+const getTextFromTxtWithFetch = (): void => {
+  fetch('./text.txt')
+    .then((response: Response) => {
+      return response.text()
+    })
+    .then(text => {
+      document.getElementById('paragraphTxt1').innerHTML = text
+    })
+}
+
+getTextFromTxtWithAsyncAwait()
+getTextFromTxtWithFetch()
 catchRainbowWithAsyncAwait()
 catchRainbowWithFetch()

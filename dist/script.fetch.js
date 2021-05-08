@@ -26,5 +26,21 @@ const catchRainbowWithFetch = () => {
         console.error(error);
     });
 };
+const getTextFromTxtWithAsyncAwait = () => __awaiter(this, void 0, void 0, function* () {
+    const response = yield fetch('./text.txt');
+    const text = yield response.text();
+    document.getElementById('paragraphTxt2').innerHTML = text;
+});
+const getTextFromTxtWithFetch = () => {
+    fetch('./text.txt')
+        .then((response) => {
+        return response.text();
+    })
+        .then(text => {
+        document.getElementById('paragraphTxt1').innerHTML = text;
+    });
+};
+getTextFromTxtWithAsyncAwait();
+getTextFromTxtWithFetch();
 catchRainbowWithAsyncAwait();
 catchRainbowWithFetch();
