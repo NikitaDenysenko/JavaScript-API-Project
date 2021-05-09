@@ -7,12 +7,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const catchRainbowWithAsyncAwait = () => __awaiter(this, void 0, void 0, function* () {
-    const response = yield fetch('./rainbow-weather.jpeg');
-    const blob = yield response.blob();
-    const urlFromBlob = URL.createObjectURL(blob);
-    document.getElementById('rainbow1').setAttribute('src', urlFromBlob);
-});
 const catchRainbowWithFetch = () => {
     fetch('./rainbow-weather.jpeg')
         .then((response) => {
@@ -20,26 +14,36 @@ const catchRainbowWithFetch = () => {
     })
         .then((blob) => {
         const urlFromBlob = URL.createObjectURL(blob);
-        document.getElementById('rainbow2').setAttribute('src', urlFromBlob);
+        const image = document.getElementById('rainbow2');
+        image.src = urlFromBlob;
     })
         .catch((error) => {
         console.error(error);
     });
 };
-const getTextFromTxtWithAsyncAwait = () => __awaiter(this, void 0, void 0, function* () {
-    const response = yield fetch('./text.txt');
-    const text = yield response.text();
-    document.getElementById('paragraphTxt2').innerHTML = text;
+const catchRainbowWithAsyncAwait = () => __awaiter(this, void 0, void 0, function* () {
+    const response = yield fetch('./rainbow-weather.jpeg');
+    const blob = yield response.blob();
+    const urlFromBlob = URL.createObjectURL(blob);
+    const image = document.getElementById('rainbow2');
+    image.src = urlFromBlob;
 });
 const getTextFromTxtWithFetch = () => {
+    const paragraph = document.getElementById('paragraphTxt1');
     fetch('./text.txt')
         .then((response) => {
         return response.text();
     })
         .then(text => {
-        document.getElementById('paragraphTxt1').innerHTML = text;
+        paragraph.innerHTML = text;
     });
 };
+const getTextFromTxtWithAsyncAwait = () => __awaiter(this, void 0, void 0, function* () {
+    const paragraph = document.getElementById('paragraphTxt2');
+    const response = yield fetch('./text.txt');
+    const text = yield response.text();
+    paragraph.innerHTML = text;
+});
 getTextFromTxtWithAsyncAwait();
 getTextFromTxtWithFetch();
 catchRainbowWithAsyncAwait();
