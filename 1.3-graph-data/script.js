@@ -50,3 +50,5 @@ const getData = async () => {
     return { xlabels, ytemps };
 };
 createChart();
+
+//graph the rest of the data with object
